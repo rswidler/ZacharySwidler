@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zachary Swidler Centennial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lora:ital,wght@0,400;0,500;1,400&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2744;
+    --gold: #b5922a;
+    --gold-light: #d4aa4a;
+    --cream: #f9f6f0;
+    --warm-white: #fdfbf7;
+    --text: #2c2416;
+    --text-light: #5a4e38;
+    --border: #d8c9a8;
+    --shadow: rgba(26,39,68,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Lora', Georgia, serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    background: var(--navy);
+    color: #fff;
+    text-align: center;
+    padding: 2rem 1rem 1.4rem;
+    position: relative;
+    border-bottom: 3px solid var(--gold);
+  }
+
+  header .site-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 4vw, 2.6rem);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+  }
+
+  header .site-title:hover { color: var(--gold-light); }
+
+  header .tagline {
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
+    color: var(--gold-light);
+    letter-spacing: 0.12em;
+    margin-top: 0.3rem;
+    font-style: italic;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    background: #14203a;
+    border-bottom: 1px solid rgba(181,146,42,0.35);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    justify-content: center;
+    gap: 0;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  nav ul li a {
+    display: block;
+    padding: 0.8rem 1.1rem;
+    color: #c8bfa8;
+    text-decoration: none;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.05rem;
+    letter-spacing: 0.05em;
+    transition: color 0.2s, background 0.2s;
+  }
+
+  nav ul li a:hover,
+  nav ul li a.active {
+    color: var(--gold-light);
+    background: rgba(181,146,42,0.1);
+  }
+
+  nav ul li a.active {
+    border-bottom: 2px solid var(--gold);
+  }
+
+  /* ─── MAIN ─── */
+  main {
+    flex: 1;
+    max-width: 860px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 2.5rem 1.5rem 3rem;
+  }
+
+  /* ─── PAGE SECTIONS ─── */
+  .page { display: none; animation: fadein 0.4s ease; }
+  .page.active { display: block; }
+
+  @keyframes fadein {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── HOME PAGE ─── */
+  .home-hero {
+    text-align: center;
+    padding: 1.5rem 0 2.5rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2.5rem;
+  }
+
+  .home-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+
+  .home-hero .dates {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.15rem;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-img {
+    width: 100%;
+    max-width: 540px;
+    height: auto;
+    object-fit: contain;
+    border: 3px solid var(--border);
+    box-shadow: 0 6px 24px var(--shadow);
+    margin: 0 auto 1.5rem;
+    display: block;
+  }
+
+  .home-hero blockquote {
+    font-size: 1.15rem;
+    line-height: 1.75;
+    color: var(--text-light);
+    max-width: 600px;
+    margin: 0 auto;
+    font-style: italic;
+    text-align: left;
+  }
+
+  .home-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.2rem;
+    margin-top: 2.5rem;
+  }
+
+  .home-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    padding: 1.4rem 1.2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+    text-decoration: none;
+    color: var(--navy);
+    display: block;
+  }
+
+  .home-card:hover {
+    box-shadow: 0 4px 16px var(--shadow);
+    transform: translateY(-2px);
+    border-color: var(--gold);
+  }
+
+  .home-card .card-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .home-card .card-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+
+  /* ─── BIOGRAPHY PAGE ─── */
+  .bio-section {
+    margin-bottom: 3rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .bio-section:last-child { border-bottom: none; }
+
+  .bio-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.55rem;
+    color: var(--navy);
+    margin-bottom: 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid var(--gold);
+    display: inline-block;
+  }
+
+  .bio-section img {
+    width: 100%;
+    max-width: 540px;
+    height: auto;
+    object-fit: contain;
+    border: 2px solid var(--border);
+    box-shadow: 0 4px 14px var(--shadow);
+    margin: 0 auto 1.5rem;
+    display: block;
+    background: #f0ebe0;
+  }
+
+  .side-by-side img {
+    width: 48% !important;
+    max-width: 260px !important;
+    margin: 0 !important;
+  }
+
+  .bio-section p {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--text);
+    margin-bottom: 0.9rem;
+  }
+
+  .need-content {
+    color: var(--text-light);
+    font-style: italic;
+    background: #f3ede0;
+    padding: 1rem 1.2rem;
+    border-left: 3px solid var(--gold);
+    font-size: 0.95rem;
+  }
+
+  /* ─── PAGE HEADER ─── */
+  .page-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .page-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    color: var(--navy);
+  }
+
+  /* ─── PHOTOS PAGE ─── */
+  .photos-note {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--gold);
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 2rem;
+    font-style: italic;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  .photo-section {
+    margin-bottom: 3rem;
+  }
+
+  .photo-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--navy);
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+
+  .photo-item {
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--border);
+    box-shadow: 0 3px 10px var(--shadow);
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+  }
+
+  .photo-item:hover { box-shadow: 0 6px 20px var(--shadow); }
+
+  .photo-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s;
+  }
+
+  .photo-item:hover img { transform: scale(1.03); }
+
+  .photo-item .caption {
+    padding: 0.5rem 0.7rem;
+    background: var(--warm-white);
+    font-size: 0.82rem;
+    color: var(--text-light);
+    font-style: italic;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ─── VIDEO/AUDIO PAGE ─── */
+  .media-note {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--gold);
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 2rem;
+    font-style: italic;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  .media-placeholder {
+    background: #f3ede0;
+    border: 2px dashed var(--border);
+    padding: 2.5rem;
+    text-align: center;
+    color: var(--text-light);
+    font-style: italic;
+    margin-bottom: 1.5rem;
+  }
+
+  /* ─── DOCUMENTS PAGE ─── */
+  .doc-list {
+    list-style: none;
+  }
+
+  .doc-list li {
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--border);
+    margin-bottom: 0.8rem;
+    background: var(--warm-white);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1rem;
+    color: var(--text-light);
+    font-style: italic;
+  }
+
+  .doc-list li span.icon { font-size: 1.4rem; }
+
+  /* ─── MEMORIES PAGE ─── */
+  .memories-intro {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--text-light);
+    font-style: italic;
+    margin-bottom: 2rem;
+    padding: 1.2rem 1.4rem;
+    background: var(--warm-white);
+    border-left: 4px solid var(--gold);
+  }
+
+  /* ─── FAMILY TREE PAGE ─── */
+  .family-note {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--gold);
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 2rem;
+    font-style: italic;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  .family-gen {
+    margin-bottom: 2rem;
+  }
+
+  .family-gen h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--navy);
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .family-gen ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+    line-height: 2;
+    color: var(--text);
+    font-size: 1rem;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--navy);
+    color: #8a9bbf;
+    text-align: center;
+    padding: 1.2rem;
+    font-family: 'EB Garamond', serif;
+    font-size: 0.92rem;
+    letter-spacing: 0.04em;
+    border-top: 3px solid var(--gold);
+  }
+
+  /* ─── LIGHTBOX ─── */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.88);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .lightbox.open { display: flex; }
+
+  .lightbox img {
+    max-width: 90vw;
+    max-height: 80vh;
+    object-fit: contain;
+    border: 2px solid var(--gold);
+  }
+
+  .lightbox .lb-caption {
+    color: #ddd;
+    margin-top: 0.8rem;
+    font-style: italic;
+    font-size: 0.95rem;
+  }
+
+  .lightbox .lb-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+    line-height: 1;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 600px) {
+    nav ul li a { padding: 0.65rem 0.7rem; font-size: 0.92rem; }
+    main { padding: 1.5rem 1rem 2rem; }
+    .home-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  .photo-caption {
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--text-light);
+    font-style: italic;
+    margin-top: -0.8rem;
+    margin-bottom: 1.5rem;
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a class="site-title" onclick="showPage('home')">Zachary Swidler Centennial</a>
+  <div class="tagline">b. May 4, 1917 &nbsp;·&nbsp; d. March 30, 1990</div>
+</header>
+
+<!-- NAV -->
+<nav>
+  <ul>
+    <li><a href="#" onclick="showPage('home')" id="nav-home" class="active">Home</a></li>
+    <li><a href="#" onclick="showPage('bio')" id="nav-bio">Biography</a></li>
+    <li><a href="#" onclick="showPage('photos')" id="nav-photos">Photos</a></li>
+    <li><a href="#" onclick="showPage('media')" id="nav-media">Video / Audio</a></li>
+    <li><a href="#" onclick="showPage('docs')" id="nav-docs">Documents</a></li>
+    <li><a href="#" onclick="showPage('memories')" id="nav-memories">Memories</a></li>
+    <li><a href="#" onclick="showPage('family')" id="nav-family">Family Tree</a></li>
+  </ul>
+</nav>
+
+<!-- MAIN -->
+<main>
+
+  <!-- ══════════════════ HOME ══════════════════ -->
+  <div class="page active" id="page-home">
+    <div class="home-hero">
+      <h1>Zachary Swidler Centennial</h1>
+      <div class="dates">May 4, 1917 &nbsp;—&nbsp; March 30, 1990</div>
+      <img class="hero-img"
+           src="Photos/1951 Z headshot in suit.webp"
+           alt="Zachary Swidler"
+           onerror="this.style.display='none'">
+      <p class="photo-caption">Zachary Swidler, ca. 1951</p>
+      <blockquote>
+        <p>Happy 100th Birthday Zack.</p>
+        <p style="margin-top:0.75rem">May 4, 2017 is the 100th Anniversary of Zack Swidler's birth.
+        To mark the occasion, we created this website.</p>
+        <p style="margin-top:0.75rem">It serves to honor Zack, to share and preserve memories,
+        and to tell him again that we love and miss him.</p>
+        <p style="margin-top:0.75rem">Zack died in 1990, before the internet.
+        But he would have enjoyed this.</p>
+      </blockquote>
+    </div>
+
+    <img style="width:100%;max-width:540px;height:auto;object-fit:contain;border:2px solid var(--border);box-shadow:0 4px 14px var(--shadow);display:block;margin:0 auto 2.5rem;"
+         src="Photos/1980 B and Z in Stuy Town apt LR.webp"
+         alt="Stuyvesant Town Apartment, circa 1955"
+         onerror="this.style.display='none'">
+
+    <div class="home-grid">
+      <a class="home-card" href="#" onclick="showPage('bio')">
+        <span class="card-icon">📜</span>
+        <div class="card-label">Biography</div>
+      </a>
+      <a class="home-card" href="#" onclick="showPage('photos')">
+        <span class="card-icon">📷</span>
+        <div class="card-label">Photos</div>
+      </a>
+      <a class="home-card" href="#" onclick="showPage('media')">
+        <span class="card-icon">🎬</span>
+        <div class="card-label">Video / Audio</div>
+      </a>
+      <a class="home-card" href="#" onclick="showPage('docs')">
+        <span class="card-icon">📄</span>
+        <div class="card-label">Documents</div>
+      </a>
+      <a class="home-card" href="#" onclick="showPage('memories')">
+        <span class="card-icon">💬</span>
+        <div class="card-label">Stories &amp; Memories</div>
+      </a>
+      <a class="home-card" href="#" onclick="showPage('family')">
+        <span class="card-icon">🌳</span>
+        <div class="card-label">Family Tree</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- ══════════════════ BIOGRAPHY ══════════════════ -->
+  <div class="page" id="page-bio">
+    <div class="page-header">
+      <h1>Biography</h1>
+    </div>
+
+    <div class="bio-section">
+      <h2>Russia and Turkey</h2>
+      <img src="Photos/1921 Sonia Marsha Zack and Samuel.webp"
+           alt="Sonia, Marsha, Zack and Samuel Swidler, ca. 1926" onerror="this.style.display='none'">
+      <p class="photo-caption">Sonia, Marsha, Zack and Samuel Swidler, ca. 1926</p>
+      <p>Zachary Swidler was born on May 4, 1917 in Yevpetoria, a small port town in Russia's Crimean Peninsula. The first Russian Revolution had just occurred in March; the Bolshevik Revolution and Civil War would start in October.</p>
+      <p>Zack's parents, Samuel (originally Ifsiah) and Sonia Swidler were Jews who spoke Yiddish, not Russian. Sam, a tailor, was the youngest of three orphan brothers who grew up in Little Tokmak in eastern Ukraine, then part of Russia. His older brothers were Lova and Elousha.</p>
+      <p>In 1921, to escape the Russian Civil War, poverty and pogroms, the Swidler brothers and their families, including Sonia and 4-year old Zack evaded guards to take a small boat across the Black Sea to Constantinople (Istanbul), Turkey.</p>
+      <p>There is a vivid description of the harrowing struggles and adventures of the Swidler brothers and their families, primarily Elousha's family, in a book called <em>Quiberon: And a Life is Changed Forever</em> by Madeleine Scott Swidler, Elousha's daughter. (2017).</p>
+      <p>During their year in Turkey, Sam and Sonia had another child, Marsha.</p>
+    </div>
+
+    <div class="bio-section">
+      <h2>Coming to America</h2>
+      <img src="Photos/1922 Ellis Island Manifest.webp"
+           alt="1922 Ellis Island Manifest" onerror="this.style.display='none'"
+           style="max-width:100%;height:auto;object-fit:contain;max-height:none;filter:contrast(1.3) brightness(1.05);">
+      <p class="photo-caption">1922 Ellis Island Manifest</p>
+      <p>In 1922 the Swidlers came to America as steerage passengers on the S.S. Canada. Sailing past the Statue of Liberty, they arrived in New York City on December 12, 1922. They were processed at Ellis Island and permitted to enter (the manifest lists them as Govsek, Sarah, Zahari and Marie Svidler). The Swidlers moved into an apartment in the Washington Heights area of Manhattan, on Ft. Washington Ave.</p>
+      <p>As for Sam's brothers and their families: Lova decided to stay in Constantinople (although years later his children emigrated to New York). Elousha delayed emigrating for a year, but by then the U.S. passed the harshly restrictive Immigration Act of 1924. Instead, Elousha's family emigrated to Paris. That placed them at grave risk years later during the Holocaust, as described in <em>Quiberon</em>. Eventually that Swidler family escaped to Casablanca and then to New York, where they reconnected with Sam and Sonia.</p>
+    </div>
+
+    <div class="bio-section">
+      <h2>Early Years</h2>
+      <img src="Photos/1930 Z and sister Marsha.webp"
+           alt="Zack and sister Marsha, ca. 1934" onerror="this.style.display='none'">
+      <p class="photo-caption">Zack and sister Marsha, ca. 1934</p>
+      <p>While Samuel worked as a tailor and Sonia as a homemaker, the children went to public school.</p>
+      <p>Zack went to George Washington High School. He was a strong swimmer, was on the school swim team and was a lifeguard in the summer. According to family lore, he once raced against Johnny Weissmuller, the Olympic swimmer who played Tarzan in films (presumably Weissmuller won).</p>
+      <p>Zack also took piano lessons at home, gaining both a remarkable proficiency and a lifetime love of music.</p>
+      <p>After high school, Zack went to City College of NY (CCNY) where, about 1937, he received his degree in accounting. He then worked for several years for Primoff &amp; Co., a small accounting firm.</p>
+    </div>
+
+    <div class="bio-section">
+      <h2>The War Years</h2>
+      <div class="side-by-side" style="display:flex;gap:1rem;justify-content:center;margin-bottom:1.5rem;flex-wrap:wrap;align-items:flex-start;">
+        <div style="display:flex;flex-direction:column;align-items:center;width:48%;max-width:260px;">
+          <img src="Photos/1944 Z in uniform with gun.webp"
+               alt="Zack Swidler in the Army, 1944"
+               style="width:100%;height:auto;object-fit:contain;border:2px solid var(--border);box-shadow:0 4px 14px var(--shadow);"
+               onerror="this.style.display='none'">
+          <p class="photo-caption" style="width:100%;margin:0.3rem 0 0;">Zack Swidler in the Army, 1944</p>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;width:48%;max-width:260px;">
+          <img src="Photos/1943 Zack in uniform w beer.jpeg"
+               alt="Zack Swidler in the Army, 1943"
+               style="width:100%;height:auto;object-fit:contain;border:2px solid var(--border);box-shadow:0 4px 14px var(--shadow);"
+               onerror="this.style.display='none'">
+          <p class="photo-caption" style="width:100%;margin:0.3rem 0 0;">Zack Swidler in the Army, 1943</p>
+        </div>
+      </div>
+      <p>When WWII broke out, Zack was drafted into the Army and posted at Governor's Island in NY Harbor. He joked that his family and friends held a "Going Overseas" party for him before he shipped (ferried?) out.</p>
+      <p>Among his other assignments, Corporal Swidler was an MP (Military Police), and guarded German prisoners on train trips to POW camps in the Southwest.</p>
+    </div>
+
+    <div class="bio-section">
+      <h2>Bea</h2>
+      <img src="Photos/1946 B and Z with pipe on lawn.webp"
+           alt="Bea and Zack, ca. 1946" onerror="this.style.display='none'">
+      <p class="photo-caption">Bea and Zack, ca. 1946</p>
+      <p>During the war, Zack met his future wife Bea at the USO in NYC. The story told is that he proposed on their first date, and she thought he was odd. But they started dating, and married in 1947.</p>
+      <p>They got a one bedroom apartment at 540 East 20th Street in Stuyvesant Town, a large housing project built for returning veterans.</p>
+    </div>
+
+    <div class="bio-section">
+      <h2>Kids</h2>
+      <div class="side-by-side" style="display:flex;gap:1rem;justify-content:center;margin-bottom:1.5rem;flex-wrap:wrap;align-items:flex-start;">
+        <div style="display:flex;flex-direction:column;align-items:center;width:48%;max-width:260px;">
+        <img src="Photos/1957 Z with the 3 kids.webp"
+             alt="Zack with the three boys, 1957"
+             style="width:100%;height:auto;object-fit:contain;border:2px solid var(--border);box-shadow:0 4px 14px var(--shadow);"
+             onerror="this.style.display='none'">
+        <p class="photo-caption" style="width:100%;margin:0.3rem 0 0;">Zack with the three boys, 1957</p>
+      </div>
+        <div style="display:flex;flex-direction:column;align-items:center;width:48%;max-width:260px;">
+        <img src="Photos/1959 Z with parents.jpeg"
+             alt="Zack with his parents, 1959"
+             style="width:100%;height:auto;object-fit:contain;border:2px solid var(--border);box-shadow:0 4px 14px var(--shadow);"
+             onerror="this.style.display='none'">
+          <p class="photo-caption" style="width:100%;margin:0.3rem 0 0;">Zack with his parents and his kids, 1959</p>
+      </div>
+      </div>
+      <p>Bea and Zack had three boys in the span of four years: Steven (b. 1951), Sandy (b. 1953) and Robert (b. 1954).</p>
+      <p>During this time, the Swidlers moved into a 2 bedroom apartment — Apt. 1-C — in the same building. The three kids would share the same small bedroom for 12 years.</p>
+      <p>Zack was a wonderful Dad.</p>
+    </div>
+
+    <div class="bio-section">
+      <h2>Early Career &mdash; 1950–75</h2>
+      <img src="Photos/1951 Z headshot in suit.webp"
+           alt="Zachary Swidler, ca. 1951" style="max-width:405px;" onerror="this.style.display='none'">
+      <p class="photo-caption">Zachary Swidler, ca. 1951</p>
+      <p>With Bea's encouragement (i.e. insistence) Zack applied to law school, which would be paid for by the GI Bill (thank you FDR!). With his accounting day job and three kids, he went to New York Law School at night for four years.</p>
+      <p>After graduating, Zack set up an accounting and law practice at 11 West 42nd St. (across from the NY Public Library). While there he formed a partnership with three other young lawyers, but two of them ran into serious legal troubles and the partnership dissolved. Zack emigrated to 10 West 40th St. (across from Bryant Park) where he partnered with Jack Schlossberg and Paul Sage in an accounting practice.</p>
+      <p>No partnership with Zack, except his marital partnership, was a long term affair, so after a few marginally productive years, Zack moved down the block to 21 East 40th St. and partnered with Jack Siegal, Irving Port and Herbert Posner. Posner was a NYS Assemblyman from Far Rockaway and ultimately left the practice after a few years to become a Supreme Court Justice in Queens.</p>
+      <p>Zack provided legal, accounting and tax advice to a wide range of small businesses, including a printer, a screw manufacturer on Spring Street, a stationary store, a jeweler, a manufacturer of artist colors, and a real estate investor. His clients valued his advice and became his close friends. His business grew.</p>
+    </div>
+
+    <div class="bio-section">
+      <h2>Early Family Life &mdash; 1960–75</h2>
+      <div class="side-by-side" style="display:flex;gap:1rem;justify-content:center;margin-bottom:1.5rem;flex-wrap:wrap;">
+        <div style="display:flex;flex-direction:column;align-items:center;width:48%;max-width:260px;">
+        <img src="Photos/1964 Happy New Years in Florida.JPG"
+             alt="Bea and Zack, New Years in Florida, 1964"
+             style="width:100%;height:auto;object-fit:contain;border:2px solid var(--border);box-shadow:0 4px 14px var(--shadow);"
+             onerror="this.style.display='none'">
+        <p class="photo-caption" style="width:100%;margin:0.3rem 0 0;">Bea and Zack, New Years in Florida, 1964</p>
+      </div>
+        <div style="display:flex;flex-direction:column;align-items:center;width:48%;max-width:260px;">
+        <img src="Photos/1963 Z with 3 kids on beach, burying Sandy.webp"
+             alt="Zack with 3 kids on beach, burying Sandy"
+             style="width:100%;height:auto;object-fit:contain;border:2px solid var(--border);box-shadow:0 4px 14px var(--shadow);"
+             onerror="this.style.display='none'">
+        <p class="photo-caption" style="width:100%;margin:0.3rem 0 0;">Zack with 3 kids on beach, burying Sandy</p>
+      </div>
+      </div>
+      <p>Zack's long hours at work kept him away from his wife and family a lot. But he loved them dearly, and when he was home he was always kind, interesting, and funny. He gave jewelry and other gifts to Bea often, for no special occasion.</p>
+      <p>When the kids were in cub scouts, Zack was a den leader and formed a cub scout band. In 1962, after astronaut John Glenn returned from orbiting the Earth, Zack's cub scout band, including his three kids, performed at the Waldorf Astoria luncheon for Glenn, Vice President Lyndon Johnson, and many other celebrity guests.</p>
+      <p>Bea and Zack were close to their families (parents, brothers and sisters, cousins, nieces and nephews), and they got together often. They also had a close circle of friends, notably Bernie and Bea Sumliner, who also lived in Stuyvesant Town.</p>
+      <p>In the summer, Bea and the kids would go to a bungalow colony near Middletown (1953–1962). Later they bought a summer home in Kauneonga Lake NY — three miles down the road from where the Woodstock festival would be in 1969. Zack would work in the city on weekdays and come up on weekends. His family was delighted when he arrived.</p>
+      <p>In 1967 the family moved into a slightly larger (3 bedroom) apartment — 8 Stuyvesant Oval Apt. 4-B.</p>
+    </div>
+
+    <div class="bio-section">
+      <h2>Later Career &mdash; 1975–90</h2>
+      <img src="Photos/French-Building.jpg"
+           alt="The French Building, 551 Fifth Avenue, where Zack moved his practice in 1975" onerror="this.style.display='none'">
+      <p class="photo-caption">The French Building, 551 Fifth Avenue</p>
+      <p>In 1975, Zack moved to the elegant French Building at 551 Fifth Avenue (between 46th and 47th St.), where he remarried his former partners, Sage and Schlossberg and added a new one — Stanley Ross. This time they formed a law partnership as well as an accounting partnership.</p>
+      <p>Zack's son, Steven, graduated law school (1976) and was a ski bum out West in Colorado awaiting the bar exam results. After he passed (on the first try) Zack cajoled Steven to "help him out for a few weeks and then go back to being a ski bum." Steven came, got a big case from one of his friends, stayed, made a lot of money for the firm, and convinced Zack to leave the security of his long time partners to go into business as a father and son team. Swidler &amp; Swidler, PC was born around 1979–1980 and in 1981 they moved to 41 E. 42nd St., along with Zack's ever present cream-colored Hardman piano.</p>
+      <p>Steven learned how to practice law, not from Zack, but by trial and error (mostly error). Zack focused on organizing shopping center and other high-risk tax sheltered investments. Some hit, some failed, but there was always substantial drama with manic highs and lows.</p>
+      <p>The father-son team moved to 270 Madison Avenue in 1989 (again with Zack's piano). In March 1990, the Zack part of the Swidler &amp; Swidler story ended.</p>
+    </div>
+
+    <div class="bio-section">
+      <h2>Later Family Life &mdash; 1975–90</h2>
+      <div class="side-by-side" style="display:flex;gap:1rem;justify-content:center;margin-bottom:1.5rem;flex-wrap:wrap;align-items:flex-start;">
+        <div style="display:flex;flex-direction:column;align-items:center;width:48%;max-width:260px;">
+          <img src="Photos/1977 Z with sons at Sandy wedding.webp"
+               alt="Zack with sons at Sandy's wedding, 1977"
+               style="width:100%;height:auto;object-fit:contain;border:2px solid var(--border);box-shadow:0 4px 14px var(--shadow);"
+               onerror="this.style.display='none'">
+          <p class="photo-caption" style="width:100%;margin:0.3rem 0 0;">Zack with sons at Sandy's wedding, 1977</p>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;width:48%;max-width:260px;">
+          <img src="Photos/1990 B and Z holding grandson Eric.webp"
+               alt="Bea and Zack holding grandson Eric, 1990"
+               style="width:100%;height:auto;object-fit:contain;border:2px solid var(--border);box-shadow:0 4px 14px var(--shadow);"
+               onerror="this.style.display='none'">
+          <p class="photo-caption" style="width:100%;margin:0.3rem 0 0;">Bea and Zack holding grandson Eric, 1990</p>
+        </div>
+      </div>
+      <p class="need-content">Content to be added.</p>
+    </div>
+
+    <div class="bio-section">
+      <h2>Zack and Music</h2>
+      <img src="Photos/1986 Z playing accordian on party boat.webp"
+           alt="Zack, 1980" onerror="this.style.display='none'">
+      <p class="photo-caption">Zack playing accordion, 1986</p>
+      <p>Zack loved to play the piano and the accordion. He was exceptionally talented and accomplished. For example he could play Chopin's Fantasie Impromptu, which has a mind twisting cross-rhythm: 16th notes in the right hand and triplets in the left.</p>
+      <p>He loved Chopin, Strauss waltzes, Schumann and other romantic composers. He also loved to play kitschy Broadway show tunes and Jewish klezmer-sounding favorites. Zack impressed and entertained his family and many guests.</p>
+    </div>
+
+    <div class="bio-section">
+      <h2>Zack's Personality &amp; Values</h2>
+      <img src="Photos/1982 B and Z near woods.webp"
+           alt="Zack, 1985" onerror="this.style.display='none'">
+      <p class="photo-caption">Bea and Zack, 1982</p>
+      <p class="need-content">Content to be added.</p>
+    </div>
+
+    <div class="bio-section">
+      <h2>Zack's Legacy</h2>
+      <p class="need-content">Content to be added.</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════ PHOTOS ══════════════════ -->
+  <div class="page" id="page-photos">
+    <div class="page-header">
+      <h1>Photos</h1>
+    </div>
+    <div class="photos-note">
+      These photos span Zack's life from his earliest years in Russia through his final years in New York.
+      Click any photo to enlarge it.
+    </div>
+
+    <div class="photo-section">
+      <h2>Early Life &amp; Family</h2>
+      <div class="photo-grid">
+        <div class="photo-item" onclick="openLightbox(this)">
+          <img src="Photos/1921 Sonia Marsha Zack and Samuel.webp"
+               alt="Sonia, Marsha, Zack and Samuel Swidler, ca. 1926" onerror="this.closest('.photo-item').style.display='none'">
+          <div class="caption">Sonia, Marsha, Zack and Samuel Swidler, ca. 1926</div>
+        </div>
+        <div class="photo-item" onclick="openLightbox(this)">
+          <img src="Photos/1922 Ellis Island Manifest.webp"
+               alt="1922 Ellis Island Manifest" onerror="this.closest('.photo-item').style.display='none'">
+          <div class="caption">Ellis Island Manifest, 1922</div>
+        </div>
+        <div class="photo-item" onclick="openLightbox(this)">
+          <img src="Photos/1930 Z and sister Marsha.webp"
+               alt="Zack and sister Marsha, ca. 1934" onerror="this.closest('.photo-item').style.display='none'">
+          <div class="caption">Zack and sister Marsha, ca. 1934</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="photo-section">
+      <h2>The War Years &amp; Marriage</h2>
+      <div class="photo-grid">
+        <div class="photo-item" onclick="openLightbox(this)">
+          <img src="Photos/1944 Z in uniform with gun.webp"
+               alt="Zack Swidler in the Army, 1945" onerror="this.closest('.photo-item').style.display='none'">
+          <div class="caption">Zack in the Army, 1945</div>
+        </div>
+        <div class="photo-item" onclick="openLightbox(this)">
+          <img src="Photos/1946 B and Z dating.webp"
+               alt="Zack and Bea, ca. 1947" onerror="this.closest('.photo-item').style.display='none'">
+          <div class="caption">Zack and Bea, ca. 1947</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="photo-section">
+      <h2>Family Life</h2>
+      <div class="photo-grid">
+        <div class="photo-item" onclick="openLightbox(this)">
+          <img src="Photos/1980 B and Z in Stuy Town apt LR.webp"
+               alt="Stuyvesant Town Apartment, 1955" onerror="this.closest('.photo-item').style.display='none'">
+          <div class="caption">Stuyvesant Town, 1955</div>
+        </div>
+        <div class="photo-item" onclick="openLightbox(this)">
+          <img src="Photos/1957 Z with the 3 kids.webp"
+               alt="Zachary Swidler, ca. 1958" onerror="this.closest('.photo-item').style.display='none'">
+          <div class="caption">Zachary Swidler, ca. 1958</div>
+        </div>
+        <div class="photo-item" onclick="openLightbox(this)">
+          <img src="Photos/1964 Happy New Years in Florida.JPG"
+               alt="Bea and Zack, New Years in Florida, 1964" onerror="this.closest('.photo-item').style.display='none'">
+          <div class="caption">Miami, 1964</div>
+        </div>
+        <div class="photo-item" onclick="openLightbox(this)">
+          <img src="Photos/1977 Z with sons at Sandy wedding.webp"
+               alt="Steven, Zack, Sandy and Robert at Sandy's wedding, 1977" onerror="this.closest('.photo-item').style.display='none'">
+          <div class="caption">Steven, Zack, Sandy &amp; Robert at Sandy's wedding, 1977</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="photo-section">
+      <h2>Later Years</h2>
+      <div class="photo-grid">
+        <div class="photo-item" onclick="openLightbox(this)">
+          <img src="Photos/1986 Z playing accordian on party boat.webp"
+               alt="Zack, 1980" onerror="this.closest('.photo-item').style.display='none'">
+          <div class="caption">Zack, 1980</div>
+        </div>
+        <div class="photo-item" onclick="openLightbox(this)">
+          <img src="Photos/1982 B and Z near woods.webp"
+               alt="Zack, 1985" onerror="this.closest('.photo-item').style.display='none'">
+          <div class="caption">Zack, 1985</div>
+        </div>
+        <div class="photo-item" onclick="openLightbox(this)">
+          <img src="Photos/1990 B and Z holding grandson Eric.webp"
+               alt="Zack, 1989" onerror="this.closest('.photo-item').style.display='none'">
+          <div class="caption">Zack, 1989</div>
+        </div>
+        <div class="photo-item" onclick="openLightbox(this)">
+          <img src="Photos/1951 Z headshot in suit.webp"
+               alt="Zachary Swidler" onerror="this.closest('.photo-item').style.display='none'">
+          <div class="caption">Zachary Swidler</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ VIDEO / AUDIO ══════════════════ -->
+  <div class="page" id="page-media">
+    <div class="page-header">
+      <h1>Video / Audio</h1>
+    </div>
+    <div class="media-note">
+      This page is reserved for video and audio recordings of Zack — home movies, recordings of him playing piano, and other multimedia memories.
+      Content will be added here as materials are digitized and collected.
+    </div>
+    <div class="media-placeholder">
+      🎬 &nbsp; Video content to be added
+    </div>
+    <div class="media-placeholder">
+      🎵 &nbsp; Audio recordings to be added
+    </div>
+  </div>
+
+  <!-- ══════════════════ DOCUMENTS ══════════════════ -->
+  <div class="page" id="page-docs">
+    <div class="page-header">
+      <h1>Documents</h1>
+    </div>
+    <p style="margin-bottom:1.5rem;color:var(--text-light);font-style:italic;line-height:1.7">
+      This page contains historical documents related to Zack and his family — immigration records, official papers, and other primary source materials.
+    </p>
+    <ul class="doc-list">
+      <li>
+        <span class="icon">📋</span>
+        <span>1922 Ellis Island Manifest — S.S. Canada passenger record for the Svidler family</span>
+      </li>
+      <li>
+        <span class="icon">📋</span>
+        <span>Additional documents to be added</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ══════════════════ MEMORIES ══════════════════ -->
+  <div class="page" id="page-memories">
+    <div class="page-header">
+      <h1>Stories &amp; Memories</h1>
+    </div>
+    <div class="memories-intro">
+      This page is a place to share stories and memories of Zack. Family and friends are invited to contribute their favorite recollections — funny moments, life lessons, quiet memories. Content will be added here over time.
+    </div>
+    <div class="media-placeholder" style="margin-bottom:1.5rem;">
+      Stories and memories to be added
+    </div>
+  </div>
+
+  <!-- ══════════════════ FAMILY TREE ══════════════════ -->
+  <div class="page" id="page-family">
+    <div class="page-header">
+      <h1>Family Tree</h1>
+    </div>
+    <div class="family-note">
+      The Swidler family traces its roots to the Crimean Peninsula of Russia. The family arrived in New York in 1922 and planted roots in Manhattan, building a family that now spans multiple generations.
+    </div>
+
+    <div class="family-gen">
+      <h2>Parents</h2>
+      <ul>
+        <li>Samuel Swidler (father) — tailor, immigrated from Russia</li>
+        <li>Sonia Swidler (mother) — immigrated from Russia</li>
+      </ul>
+    </div>
+
+    <div class="family-gen">
+      <h2>Zachary's Generation</h2>
+      <ul>
+        <li>Zachary (Zack) Swidler — b. May 4, 1917, Yevpetoria, Russia &nbsp;·&nbsp; d. March 30, 1990</li>
+        <li>Marsha Swidler (sister) — b. Constantinople, Turkey, ca. 1921–22</li>
+      </ul>
+    </div>
+
+    <div class="family-gen">
+      <h2>Zack &amp; Bea's Family</h2>
+      <ul>
+        <li>Beatrice (Bea) Swidler — married Zack in 1947</li>
+        <li>Steven Swidler — b. 1951</li>
+        <li>Sandy Swidler — b. 1953 (married 1977)</li>
+        <li>Robert Swidler — b. 1954</li>
+      </ul>
+    </div>
+
+    <div class="family-gen">
+      <h2>Additional Family</h2>
+      <p style="color:var(--text-light);font-style:italic;font-size:0.95rem;">Extended family details to be added.</p>
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  Copyright &copy; 2017 Zachary Swidler Centennial &mdash; All Rights Reserved.
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lb-close">&times;</span>
+  <img id="lb-img" src="" alt="">
+  <div class="lb-caption" id="lb-caption"></div>
+</div>
+
+<script>
+  // ─── PAGE NAVIGATION ───
+  const pages = ['home','bio','photos','media','docs','memories','family'];
+
+  function showPage(id) {
+    pages.forEach(p => {
+      document.getElementById('page-' + p).classList.remove('active');
+      document.getElementById('nav-' + p).classList.remove('active');
+    });
+    document.getElementById('page-' + id).classList.add('active');
+    document.getElementById('nav-' + id).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    return false;
+  }
+
+  // Stop nav links from bubbling to href="#"
+  document.querySelectorAll('nav a').forEach(a => {
+    a.addEventListener('click', e => e.preventDefault());
+  });
+
+  // ─── LIGHTBOX ───
+  function openLightbox(el) {
+    const img = el.querySelector('img');
+    const cap = el.querySelector('.caption');
+    document.getElementById('lb-img').src = img.src;
+    document.getElementById('lb-img').alt = img.alt;
+    document.getElementById('lb-caption').textContent = cap ? cap.textContent : '';
+    document.getElementById('lightbox').classList.add('open');
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
+</body>
+</html>
